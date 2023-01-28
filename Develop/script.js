@@ -1,8 +1,9 @@
-const m = moment();
-console.lo(m.tostring());
+// moment js was not working so I used dayjs instead
+const dayjs = require('dayjs');
+var now = dayjs;;
+now.format(dddd,h,m);
 
-$("#currentDay").text(moment().format("MMMM Do, YYYY"));
-
+console.lo(now.toString());
 
 var text = $('.textarea');
 var saveBtn = $('.saveBtn');
