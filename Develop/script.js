@@ -8,31 +8,52 @@ var text = $('.textarea');
 var saveBtn = $('.saveBtn');
 var hour = dayjs().hour();
 
-//need dom hooks
-
-function save()
+function reloadStorage()
 {
-    //save button onclick event
-    //how to do in jquery syntax?
+    for (let i = 9; i < 18; i++) 
+    {
+        let currentText = localStorage.getItem(i);
+        $("#" + i).text(currentText);
+    }
 }
 
-function saveToLocalStorage()
+function save(textID)
 {
-    //take from textarea?
-}
-
-function resetTextArea()
-{
-    //resets text area on page load
+    //save button
+    //save to local storage
+    currentText = $("#" + textID);
+    let text = currentText.text;
+    localStorage.setItem(textID, text); 
 }
 
 function displayColors()
 {
     //updates color after each event, //and or change in hour?
     //clear button
-    for (let i = 0; i < 9; i++) 
-    {
-        //should be for each row instead
+    for (let i = 9; i < 18; i++) 
+    {   
+        currentElement = $("#" + i);
+
+        if (i > now.$H)
+        {
+            currentElement.removeClass("past");
+            customElements.removeClass("present");
+            currentElement.addClass("future");
+        }
+        else if (i == now.$H)
+        {
+            currentElement.removeClass("past");
+            currentElement.removeClass("future");
+            currentElement.addClass("present");
+        }
+        else
+        {
+            currentElement.removeClass("present");
+            currentElement.removeClass("future");
+            currentElement.addClass("past");
+        }
     }
 }
 
+displayColors();
+reloadStorage();
