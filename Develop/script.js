@@ -13,7 +13,7 @@ function reloadStorage()
     for (let i = 9; i < 18; i++) 
     {
         let currentText = localStorage.getItem(i);
-        $("#" + i).text(currentText);
+        $("#" + i).val(currentText);
     }
 }
 
@@ -22,7 +22,8 @@ function save(textID)
     //save button
     //save to local storage
     currentText = $("#" + textID);
-    let text = currentText.text;
+    let text = currentText.val();
+    console.log(text);
     localStorage.setItem(textID, text); 
 }
 
@@ -33,14 +34,16 @@ function displayColors()
     for (let i = 9; i < 18; i++) 
     {   
         currentElement = $("#" + i);
+        //hour = now.$H;
+        hour = 12; //for testing purposes
 
-        if (i > now.$H)
+        if (i > hour)
         {
             currentElement.removeClass("past");
             customElements.removeClass("present");
             currentElement.addClass("future");
         }
-        else if (i == now.$H)
+        else if (i == hour)
         {
             currentElement.removeClass("past");
             currentElement.removeClass("future");
