@@ -1,4 +1,5 @@
 // moment js was not working so I used dayjs instead
+//I think its because its depricated.
 var now = dayjs();
 now.format("dddd,h,m");
 
@@ -35,12 +36,12 @@ function displayColors()
     {   
         currentElement = $("#" + i);
         //hour = now.$H;
-        hour = 12; //for testing purposes
+        //hour = 2; //for testing purposes
 
         if (i > hour)
         {
             currentElement.removeClass("past");
-            customElements.removeClass("present");
+            currentElement.removeClass("present");
             currentElement.addClass("future");
         }
         else if (i == hour)
